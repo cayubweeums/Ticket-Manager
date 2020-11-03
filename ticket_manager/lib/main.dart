@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ticket_manager/blank_page.dart';
+import 'blank_two_page.dart';
 import 'home_page.dart';
 
 void main() => runApp(new MyApp());
@@ -27,12 +29,17 @@ class MyHomePage extends StatefulWidget{
 
 class _MyHomePageState extends State<MyHomePage>{
 
+  static BlankPage b = new BlankPage();
   static HomePage h = new HomePage();
+  static BlankTwoPage b2 = new BlankTwoPage();
+
 
 
   int _currentIndex = 1;
   final List<Widget> _children = [
+    b,
     h,
+    b2
   ];
 
   void tappedBar(index){
@@ -54,6 +61,16 @@ class _MyHomePageState extends State<MyHomePage>{
                 icon: Icon(Icons.home),
                 title: Text("Home"),
                 backgroundColor: Colors.green
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.gamepad),
+                title: Text("Test"),
+                backgroundColor: Colors.pink
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.edit_attributes),
+                title: Text("Test 2"),
+                backgroundColor: Colors.brown
             ),
           ],
           onTap: tappedBar
