@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "401979670206",
+    "firebase_url": "https://ticket-manager-app.firebaseio.com",
+    "project_id": "ticket-manager-app",
+    "storage_bucket": "ticket-manager-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401979670206:android:a0c3087b1a18e33fb228ef",
+        "android_client_info": {
+          "package_name": "com.example.ticket_manager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401979670206-mdqj7q4fk2utrqbqegfenvnqpeip4us3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACph8j8ofNQ4nAp4QJeJpa_1XElzzH5Es"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401979670206-mdqj7q4fk2utrqbqegfenvnqpeip4us3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
