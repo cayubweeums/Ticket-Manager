@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 
-
-class BlankPage extends StatefulWidget{
+class BlankPage extends StatefulWidget {
   @override
   State createState() => new BlankPageState();
 }
@@ -11,13 +10,11 @@ class BlankPageState extends State<BlankPage> {
   final controllerOne = TextEditingController();
   // String text = "";
 
-
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
     controllerOne.dispose();
   }
-
 
   // void changeText(text){
   //   setState(() {
@@ -25,12 +22,11 @@ class BlankPageState extends State<BlankPage> {
   //   });
   // }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
-        title: new Text("Test Page"),
+        title: new Text("HOME"),
         centerTitle: true,
         backgroundColor: Colors.indigo,
       ),
@@ -42,13 +38,11 @@ class BlankPageState extends State<BlankPage> {
             TextField(
               controller: controllerOne,
               decoration: InputDecoration(
-                suffixIcon: IconButton(
-                  icon: Icon(Icons.send),
-                  onPressed: () => {},
-                  splashColor: Colors.pink,
-                  tooltip: "Do a barrell roil",
-                )
-              ),
+                  suffixIcon: IconButton(
+                icon: Icon(Icons.send),
+                onPressed: () => {},
+                splashColor: Colors.pink,
+              )),
             ),
           ],
         ),
@@ -56,7 +50,5 @@ class BlankPageState extends State<BlankPage> {
     );
   }
 }
-
-
 
 // https://www.youtube.com/watch?v=mXREh3S8Yw0
