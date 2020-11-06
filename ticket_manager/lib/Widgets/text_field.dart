@@ -6,30 +6,24 @@ class TextFieldWidget extends StatefulWidget {
 
   TextFieldWidget(this.callback);
 
-
   @override
   _TextFieldWidgetState createState() => _TextFieldWidgetState();
 }
 
-
-
 class _TextFieldWidgetState extends State<TextFieldWidget> {
   final controllerOne = TextEditingController();
 
-
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
     controllerOne.dispose();
   }
 
-
-  void click(){
+  void click() {
     widget.callback(controllerOne.text);
     controllerOne.clear();
     FocusScope.of(context).unfocus();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +31,11 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
       controller: controllerOne,
       decoration: InputDecoration(
           suffixIcon: IconButton(
-            icon: Icon(Icons.send),
-            onPressed: this.click,
-            splashColor: Colors.pink,
-            tooltip: "Do a barrell roil",
-          )
-      ),
+        icon: Icon(Icons.send),
+        onPressed: this.click,
+        splashColor: Colors.pink,
+        tooltip: "Send Ticket",
+      )),
     );
   }
 }
