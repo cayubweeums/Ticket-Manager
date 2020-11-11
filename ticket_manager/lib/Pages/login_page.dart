@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ticket_manager/Services/auth.dart';
 import 'dart:ui';
-
-
+import 'password_page.dart';
 import 'home_page.dart';
 
 
@@ -61,7 +60,9 @@ class _LoginPageState extends State<LoginPage> {
 
   }
 
-
+  void devlogin(){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => PassPage()));
+  }
 
   Widget _buildNameTF() {
     return Form(
@@ -130,9 +131,34 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  Widget _devlogin(){
+  return Container(
+    padding: EdgeInsets.symmetric(vertical: 25.0),
+    width: double.infinity,
+    child: RaisedButton(
+      elevation: 1.0,
+      onPressed: this.devlogin,
+      padding: EdgeInsets.all(7.5),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
+      color: Colors.blue,
+      child: Text(
+        'Dev Login',
+        style: TextStyle(
+          color: Colors.white,
+          letterSpacing: 0.5,
+          fontSize: 11.0,
+          fontWeight: FontWeight.bold,
+          fontFamily: 'OpenSans',
+        ),
+      ),
+    ),
+  );
+  }
 
 
-  // Page for entering login info and attempting to login or creating a new user
+// Page for entering login info and attempting to login or creating a new user
   Widget loginPage() {
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
@@ -168,6 +194,7 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(height: 30.0),
                       _buildNameTF(),
                       _buildLoginBtn(),
+                      _devlogin(),
                     ],
                   ),
                 ),
