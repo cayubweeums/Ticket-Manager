@@ -25,29 +25,33 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text("Home"),
-        centerTitle: true,
-        backgroundColor: Colors.blueAccent,
-      ),
-      body: Container(
-        color: Colors.white10,
-        padding: EdgeInsets.only(left: 8, right: 8),
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Expanded(child: TicketList(this.tickets)),
-            TextFieldWidget(this.newTicket),
-            IconButton(
-              icon: Icon(Icons.send),
-              onPressed: () {
-                Navigator.of(context).pushNamed("/AddTicketPage");
-              },
-              splashColor: Colors.purpleAccent,
-            )
-          ],
+        appBar: new AppBar(
+          title: new Text("Home"),
+          centerTitle: true,
+          backgroundColor: Colors.blueAccent,
         ),
-      ),
-    );
+        body: Center(
+          child: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.bottomLeft,
+                    colors: [Colors.purple, Colors.blueAccent])),
+            padding: EdgeInsets.only(left: 8, right: 8),
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(child: TicketList(this.tickets)),
+                TextFieldWidget(this.newTicket),
+                IconButton(
+                  icon: Icon(Icons.send),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed("/AddTicketPage");
+                  },
+                  splashColor: Colors.purpleAccent,
+                )
+              ],
+            ),
+          ),
+        ));
   }
 }

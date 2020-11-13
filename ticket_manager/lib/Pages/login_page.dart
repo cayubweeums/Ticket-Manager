@@ -7,12 +7,10 @@ import 'dart:ui';
 import 'password_page.dart';
 import 'home_page.dart';
 
-
-class LoginPage extends StatefulWidget{
+class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
 }
-
 
 class _LoginPageState extends State<LoginPage> {
   String userName;
@@ -28,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
   );
 
   final labelStyle = TextStyle(
-    color: Colors.blueAccent,
+    color: Colors.white,
     fontWeight: FontWeight.bold,
     fontFamily: 'OpenSans',
   );
@@ -45,65 +43,61 @@ class _LoginPageState extends State<LoginPage> {
     ],
   );
 
-
   @override
   Widget build(BuildContext context) {
     return loginPage();
   }
 
-
-  void login(){
-
+  void login() {
     this.userName = controllerOne.text;
     this.user = _authService.signInAnonymously();
-    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(userName, user)));
-
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => HomePage(userName, user)));
   }
 
-  void devlogin(){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => PassPage()));
+  void devlogin() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => PassPage()));
   }
 
   Widget _buildNameTF() {
     return Form(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              'Name',
-              style: labelStyle,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Name',
+          style: labelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: boxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            controller: controllerOne,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
             ),
-            SizedBox(height: 10.0),
-            Container(
-              alignment: Alignment.centerLeft,
-              decoration: boxDecorationStyle,
-              height: 60.0,
-              child: TextField(
-                controller: controllerOne,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'OpenSans',
-                ),
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.only(top: 14.0),
-                  prefixIcon: Icon(
-                    Icons.person,
-                    color: Colors.purple,
-                  ),
-                  hintText: 'Enter your Name',
-                  hintStyle: hintTextStyle,
-                ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.person,
+                color: Colors.purple,
               ),
+              hintText: 'Enter your Name',
+              hintStyle: hintTextStyle,
             ),
-            SizedBox(
-              height: 30.0,
-            ),
-          ],
-        )
-    );
+          ),
+        ),
+        SizedBox(
+          height: 30.0,
+        ),
+      ],
+    ));
   }
-
 
   Widget _buildLoginBtn() {
     return Container(
@@ -131,37 +125,42 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _devlogin(){
-  return Container(
-    padding: EdgeInsets.symmetric(vertical: 25.0),
-    width: double.infinity,
-    child: RaisedButton(
-      elevation: 1.0,
-      onPressed: this.devlogin,
-      padding: EdgeInsets.all(7.5),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      color: Colors.blue,
-      child: Text(
-        'Dev Login',
-        style: TextStyle(
-          color: Colors.white,
-          letterSpacing: 0.5,
-          fontSize: 11.0,
-          fontWeight: FontWeight.bold,
-          fontFamily: 'OpenSans',
+  Widget _devlogin() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 25.0),
+      width: double.infinity,
+      child: RaisedButton(
+        elevation: 1.0,
+        onPressed: this.devlogin,
+        padding: EdgeInsets.all(7.5),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        color: Colors.blue,
+        child: Text(
+          'Dev Login',
+          style: TextStyle(
+            color: Colors.white,
+            letterSpacing: 0.5,
+            fontSize: 11.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OpenSans',
+          ),
         ),
       ),
-    ),
-  );
+    );
   }
-
 
 // Page for entering login info and attempting to login or creating a new user
   Widget loginPage() {
     return Scaffold(
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        body: Center(
+            child: Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topRight,
+              colors: [Colors.purple, Colors.blueAccent])),
+      child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -185,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
                       Text(
                         'Sign In',
                         style: TextStyle(
-                          color: Colors.blueAccent,
+                          color: Colors.white,
                           fontFamily: 'OpenSans',
                           fontSize: 30.0,
                           fontWeight: FontWeight.bold,
@@ -203,7 +202,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
-    );
+    )));
   }
-
 }
