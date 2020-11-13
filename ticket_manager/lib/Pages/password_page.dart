@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dev_ticket_page.dart';
 
-
 class PassPage extends StatefulWidget {
   @override
   State createState() => new PassPageState();
@@ -10,15 +9,14 @@ class PassPage extends StatefulWidget {
 //Password is "password"
 
 class PassPageState extends State<PassPage> {
-
   TextEditingController _controller = new TextEditingController();
   get passtext => _controller.text;
 
-  _checksum(){
-    if (passtext == "password"){
-      Navigator.push(context, MaterialPageRoute(builder: (context) => DevTick()));
+  _checksum() {
+    if (passtext == "password") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => DevTick()));
     }
-
   }
 
   @override
@@ -40,11 +38,13 @@ class PassPageState extends State<PassPage> {
               obscureText: true,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Password',
+                labelText: 'the password is "password"',
               ),
             ),
             RaisedButton(
-              onPressed: (){_checksum();},
+              onPressed: () {
+                _checksum();
+              },
               child: Text('Enter Password'),
             ),
           ],
