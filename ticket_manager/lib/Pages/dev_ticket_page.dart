@@ -24,30 +24,35 @@ class DevTickState extends State<DevTick> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text("Tickets"),
-        centerTitle: true,
-        backgroundColor: Colors.blueAccent,
-      ),
-      body: Container(
-        color: Colors.white10,
-        child: new Column(
-          children: <Widget>[
-            ListTile(
-              title: Text(b),
-              subtitle: Text(c),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => OpenTicket(a, b, c)
-                  ),
-                );
-              },
-            ),
-          ],
+        appBar: new AppBar(
+          title: new Text("Tickets"),
+          centerTitle: true,
+          backgroundColor: Colors.blueAccent,
         ),
-      ),
-    );
+        body: Center(
+            child: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.bottomLeft,
+                  colors: [Colors.purple, Colors.blueAccent])),
+          child: Container(
+            color: Colors.white10,
+            child: new Column(
+              children: <Widget>[
+                ListTile(
+                  title: Text(b),
+                  subtitle: Text(c),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => OpenTicket(a, b, c)),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+        )));
   }
 }
