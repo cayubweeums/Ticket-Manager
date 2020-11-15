@@ -4,6 +4,7 @@ import 'package:ticket_manager/Objects/ticket.dart';
 import 'package:ticket_manager/Widgets/text_field.dart';
 import 'package:ticket_manager/Widgets/ticket_list.dart';
 
+
 class HomePage extends StatefulWidget {
   final String userName;
   final dynamic user;
@@ -42,11 +43,11 @@ class HomePageState extends State<HomePage> {
               children: <Widget>[
                 Expanded(child: TicketList(this.tickets)),
                 TextFieldWidget(this.newTicket),
-                IconButton(
-                  icon: Icon(Icons.send),
+                FlatButton(
                   onPressed: () {
                     Navigator.of(context).pushNamed("/AddTicketPage");
                   },
+                  child: Image.asset('assets/icon/service.png'),
                   splashColor: Colors.purpleAccent,
                 )
               ],
