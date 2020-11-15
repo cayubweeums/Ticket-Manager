@@ -12,8 +12,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    assets:
-    - assets/
 
 
   cupertino_icons: ^0.1.3
