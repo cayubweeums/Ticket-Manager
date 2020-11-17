@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:ticket_manager/Objects/ticket.dart';
+import 'package:ticket_manager/Pages/add_ticket_page.dart';
+import 'package:ticket_manager/Services/database.dart';
 import 'package:ticket_manager/Widgets/text_field.dart';
 import 'package:ticket_manager/Widgets/ticket_list.dart';
 
@@ -17,9 +20,12 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   List<Ticket> tickets = [];
 
-  void newTicket(String text) {
+  void newTicket(String title, String description) {
+    var ticket = new Ticket(widget.userName, title, description, "open");
+    var ticketId = saveTicket(ticket);
+    ticket.setId(ticketId);
     this.setState(() {
-      tickets.add(new Ticket(widget.userName, "User", text));
+      tickets.add(ticket);
     });
   }
 
@@ -41,11 +47,15 @@ class HomePageState extends State<HomePage> {
             child: new Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Expanded(child: TicketList(this.tickets)),
-                TextFieldWidget(this.newTicket),
+                Expanded(child: TicketList(this.tickets, widget.userName)),
                 FlatButton(
                   onPressed: () {
-                    Navigator.of(context).pushNamed("/AddTicketPage");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddTicketPage(this.newTicket),
+                      ),
+                    );
                   },
                   child: Image.asset('assets/icon/service.png'),
                   splashColor: Colors.purpleAccent,

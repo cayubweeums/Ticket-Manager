@@ -1,18 +1,26 @@
+import 'package:firebase_database/firebase_database.dart';
+
 class Ticket{
-  var _id;
+  DatabaseReference _id;
   String author;
   String title;
   String description;
   String state;
 
-  Ticket(this.author, this.title, this.description);
+  Ticket(this.author, this.title, this.description, this.state);
 
 
-  void addNewTicket(){
-
-
-
+  void setId(DatabaseReference id){
+    this._id = id;
   }
 
+  Map<String, dynamic> toJson(){
+    return {
+      'author': this.author,
+      'title': this.title,
+      'description': this.description,
+      'state': this.state
+    };
+  }
 
 }

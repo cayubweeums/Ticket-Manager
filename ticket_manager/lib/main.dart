@@ -27,9 +27,6 @@ class MyApp extends StatelessWidget{
               visualDensity: VisualDensity.adaptivePlatformDensity,
             ),
             home: LoginPage(),
-            routes: <String, WidgetBuilder>{
-              "/AddTicketPage" :(BuildContext context) => new AddTicketPage()
-            },
           );
         }
 

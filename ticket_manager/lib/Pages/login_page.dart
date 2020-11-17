@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
     this.userName = controllerOne.text;
     this.user = _authService.signInAnonymously();
     Navigator.push(context,
-        MaterialPageRoute(builder: (context) => HomePage(userName, user)));
+        MaterialPageRoute(builder: (context) => HomePage(userName,user)));
   }
 
   void devlogin() {

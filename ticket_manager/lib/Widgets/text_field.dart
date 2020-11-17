@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class TextFieldWidget extends StatefulWidget {
   final Function(String) callback;
+  // final String user;
 
   TextFieldWidget(this.callback);
 
@@ -12,7 +13,6 @@ class TextFieldWidget extends StatefulWidget {
 
 class _TextFieldWidgetState extends State<TextFieldWidget> {
   final controllerOne = TextEditingController();
-
   @override
   void dispose() {
     super.dispose();
@@ -31,10 +31,10 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
       controller: controllerOne,
       decoration: InputDecoration(
           suffixIcon: IconButton(
-        icon: Icon(Icons.send),
-        onPressed: this.click,
-        splashColor: Colors.pink,
-        tooltip: "Send Ticket",
+            icon: Icon(Icons.send),
+            onPressed: this.click,
+            splashColor: Colors.pink,
+            tooltip: "Send Ticket",
       )),
     );
   }

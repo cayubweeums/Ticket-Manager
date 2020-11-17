@@ -2,15 +2,31 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AddTicketPage extends StatefulWidget {
+  final Function(String, String) callback;
+
+  AddTicketPage(this.callback);
+
   @override
   State createState() => new AddTicketPageState();
 }
 
 class AddTicketPageState extends State<AddTicketPage> {
-  final TextEditingController author = new TextEditingController(text: "");
+  final TextEditingController title = new TextEditingController(text: "");
   final TextEditingController description = new TextEditingController(text: "");
 
-  void _saveInfo() {}
+  @override
+  void dispose() {
+    super.dispose();
+    title.dispose();
+    description.dispose();
+  }
+
+  void _saveInfo() {
+    widget.callback(title.text, description.text);
+    title.clear();
+    description.clear();
+    FocusScope.of(context).unfocus();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +43,9 @@ class AddTicketPageState extends State<AddTicketPage> {
             new TextField(
               keyboardType: TextInputType.text,
               textAlign: TextAlign.center,
-              controller: author,
+              controller: title,
               decoration: InputDecoration(
-                  hintText: "Author", hintStyle: TextStyle(color: Colors.grey)),
+                  hintText: "Title", hintStyle: TextStyle(color: Colors.grey)),
             ),
             new TextField(
               keyboardType: TextInputType.text,
