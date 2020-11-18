@@ -14,6 +14,14 @@ class Ticket{
     this._id = id;
   }
 
+  DatabaseReference getId(){
+    return this._id;
+  }
+
+  void setState(String state){
+    this.state = state;
+  }
+
   Map<String, dynamic> toJson(){
     return {
       'author': this.author,

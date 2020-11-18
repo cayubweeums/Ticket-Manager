@@ -13,6 +13,14 @@ DatabaseReference saveTicket(Ticket ticket){
 
 
 void changeTicketState(Ticket ticket, String state){
-
-
+  if(state == "open"){
+    // ticket.getId().remove();
+    // ticket.setState(state);
+    // saveTicket(ticket);
+  }else{
+    ticket.getId().remove();
+    ticket.setState(state);
+    var id = databaseRef.child('tickets/').child("closed/").push();
+    id.set(ticket.toJson());
+  }
 }
