@@ -7,24 +7,57 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:flutter/material.dart';
+import 'package:ticket_manager/Services/auth.dart';
+import 'package:ticket_manager/Objects/ticket.dart';
+import 'package:ticket_manager/Pages/home_page.dart';
 import 'package:ticket_manager/main.dart';
 
+import '../lib/Services/database.dart';
+
+
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  test('Create Ticket Class Test', () {
+    String author = "Test User";
+    String title = "Test Title";
+    String description = "Placeholder";
+    String state = "Open";
+    // ignore: non_constant_identifier_names
+    Ticket T1 = Ticket(
+        author,
+        title,
+        description,
+        state
+    );
+    expect(T1, T1);
   });
+
+//   test("Save Ticket Test",(){
+//     Under Construction
+//     String author = "Test User";
+//     String  title = "Test Title";
+//     String description = "Placeholder";
+//     String state = "Open";
+//     Ticket T2 = Ticket(
+//         author,
+//         title,
+//         description,
+//         state
+//     );
+//     saveTicket(T2);
+//     TestR = Some way of retrieving stored Tickets (json or database?)
+//     expect(TestR, T2);
+//   });
+// }
+//
+
+  test('User Test', () {
+    //Under Construction
+    //String user = "Test User"; Firebase doesn't store usernames in the database when connectiong, unnecessary(?)
+    AuthService _authService = AuthService();
+    expect(null, _authService.signInAnonymously()); // Expects a null as sigining in anonymously does not return specific usernames
+  });
+
+
+
 }
