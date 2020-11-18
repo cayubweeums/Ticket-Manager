@@ -21,33 +21,39 @@ class OpenTick extends State<OpenTicket> {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.a),
+          backgroundColor: Colors.blueAccent,
         ),
         body: Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Align(
-                  alignment: Alignment.center,
-                  child: Text(widget.b),
-                ),
-                DropdownButton(
-                  value: dropdownValue,
-                  icon: Icon(Icons.arrow_downward),
-                  underline: Container(),
-                  onChanged: (String newValue) {
-                    setState(() {
-                      dropdownValue = newValue;
-                    });
-                  },
-                  items: <String>['Open', 'Pending', 'Closed']
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                ),
-              ]),
-        ));
+          child: Container(
+            decoration: BoxDecoration(
+            gradient: LinearGradient(
+            begin: Alignment.bottomLeft,
+            colors: [Colors.purple, Colors.blueAccent])),
+            child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Align(
+                          alignment: Alignment.center,
+                          child: Text(widget.b),
+                        ),
+                        DropdownButton(
+                          value: dropdownValue,
+                          icon: Icon(Icons.arrow_downward),
+                          underline: Container(),
+                          onChanged: (String newValue) {
+                            setState(() {
+                              dropdownValue = newValue;
+                            });
+                          },
+                          items: <String>['Open', 'Pending', 'Closed']
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ]),
+                )));
   }
 }
