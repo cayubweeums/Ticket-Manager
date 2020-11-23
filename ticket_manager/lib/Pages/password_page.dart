@@ -46,12 +46,19 @@ class PassPageState extends State<PassPage> {
                     labelText: 'the password is "password"',
                   ),
                 ),
-                RaisedButton(
-                  onPressed: () {
-                    _checksum();
-                  },
-                  child: Text('Enter Password'),
-                ),
+                Container(
+                  child: RaisedButton(
+                    elevation: 5.0,
+                    onPressed: () {
+                      _checksum();
+                    },
+                    padding: EdgeInsets.all(15.0),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0)),
+                    color: Colors.purple,
+                    child: Text('Enter Password'),
+                  ),
+                )
               ],
             ),
           ),
