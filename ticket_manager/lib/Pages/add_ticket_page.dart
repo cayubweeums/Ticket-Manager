@@ -31,39 +31,45 @@ class AddTicketPageState extends State<AddTicketPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text("Add Ticket"),
-        centerTitle: true,
-        backgroundColor: Colors.blueAccent,
-      ),
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            new TextField(
-              keyboardType: TextInputType.text,
-              textAlign: TextAlign.center,
-              controller: title,
-              decoration: InputDecoration(
-                  hintText: "Title", hintStyle: TextStyle(color: Colors.grey)),
-            ),
-            new TextField(
-              keyboardType: TextInputType.text,
-              textAlign: TextAlign.center,
-              controller: description,
-              decoration: InputDecoration(
-                  hintText: "Description",
-                  hintStyle: TextStyle(color: Colors.grey)),
-            ),
-            new RaisedButton.icon(
-              onPressed: _saveInfo,
-              icon: Icon(Icons.save),
-              color: Colors.purpleAccent,
-              label: Text("Save"),
-            )
-          ],
+        appBar: new AppBar(
+          title: new Text("Add Ticket"),
+          centerTitle: true,
+          backgroundColor: Colors.blueAccent,
         ),
-      ),
-    );
+        body: Container(
+          child: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    colors: [Colors.purple, Colors.blueAccent])),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                new TextField(
+                  keyboardType: TextInputType.text,
+                  textAlign: TextAlign.center,
+                  controller: title,
+                  decoration: InputDecoration(
+                      hintText: "Title",
+                      hintStyle: TextStyle(color: Colors.grey)),
+                ),
+                new TextField(
+                  keyboardType: TextInputType.text,
+                  textAlign: TextAlign.center,
+                  controller: description,
+                  decoration: InputDecoration(
+                      hintText: "Description",
+                      hintStyle: TextStyle(color: Colors.grey)),
+                ),
+                new RaisedButton.icon(
+                  onPressed: _saveInfo,
+                  icon: Icon(Icons.save),
+                  color: Colors.purpleAccent,
+                  label: Text("Save"),
+                )
+              ],
+            ),
+          ),
+        ));
   }
 }
