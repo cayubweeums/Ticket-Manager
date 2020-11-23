@@ -7,7 +7,6 @@ import 'package:ticket_manager/Services/database.dart';
 import 'package:ticket_manager/Widgets/text_field.dart';
 import 'package:ticket_manager/Widgets/ticket_list.dart';
 
-
 class HomePage extends StatefulWidget {
   final String userName;
   final dynamic user;
@@ -32,23 +31,24 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: new AppBar(
-          title: new Text("Home"),
-          centerTitle: true,
-          backgroundColor: Colors.blueAccent,
-        ),
-        body: Center(
-          child: Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.bottomLeft,
-                    colors: [Colors.purple, Colors.blueAccent])),
-            padding: EdgeInsets.only(left: 8, right: 8),
-            child: new Column(
+      appBar: new AppBar(
+        title: new Text("Home"),
+        centerTitle: true,
+        backgroundColor: Colors.blueAccent,
+      ),
+      body: Center(
+        child: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.bottomLeft,
+                  colors: [Colors.purple, Colors.blueAccent])),
+          padding: EdgeInsets.only(left: 8, right: 8),
+          child: new Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Expanded(child: TicketList(this.tickets, widget.userName)),
                 FlatButton(
+                  highlightColor: Colors.redAccent,
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -58,11 +58,11 @@ class HomePageState extends State<HomePage> {
                     );
                   },
                   child: Image.asset('assets/icon/service.png'),
-                  splashColor: Colors.purpleAccent,
+                  shape: OutlineInputBorder(),
                 )
-              ],
-            ),
-          ),
-        ));
+              ]),
+        ),
+      ),
+    );
   }
 }

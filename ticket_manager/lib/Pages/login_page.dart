@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
     this.userName = controllerOne.text;
     this.user = _authService.signInAnonymously();
     Navigator.push(context,
-        MaterialPageRoute(builder: (context) => HomePage(userName,user)));
+        MaterialPageRoute(builder: (context) => HomePage(userName, user)));
   }
 
   void devlogin() {
@@ -128,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget _devlogin() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
-      width: double.infinity,
+      width: 200,
       child: RaisedButton(
         elevation: 1.0,
         onPressed: this.devlogin,
