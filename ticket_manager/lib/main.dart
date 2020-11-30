@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget{
           return new MaterialApp(
             title: "Ticket Manager App",
             theme: ThemeData(
-              primarySwatch: Colors.brown,
+              primarySwatch: Colors.grey,
               visualDensity: VisualDensity.adaptivePlatformDensity,
             ),
             home: LoginPage(),

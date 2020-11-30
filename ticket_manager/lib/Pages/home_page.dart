@@ -28,6 +28,23 @@ class HomePageState extends State<HomePage> {
     });
   }
 
+
+  void loadOpenTickets(){
+    getOpenTicketList().then((tickets) => {
+      this.setState(() {
+        this.tickets = tickets;
+      })
+    });
+  }
+
+
+  @override
+  void initState(){
+    super.initState();
+    loadOpenTickets();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

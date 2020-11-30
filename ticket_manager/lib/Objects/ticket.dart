@@ -1,4 +1,5 @@
 import 'package:firebase_database/firebase_database.dart';
+import 'package:ticket_manager/Services/database.dart';
 
 class Ticket{
   DatabaseReference _id;
@@ -30,5 +31,23 @@ class Ticket{
       'state': this.state
     };
   }
+
+  void update(){
+    updateTicket(this, this._id);
+  }
+
+// Ticket createTicket(item) {
+//   Map<String, dynamic> keys = {
+//     'author': '',
+//     'title': '',
+//     'description': '',
+//     'state': ''
+//   };
+//
+//   item.forEach((key, value) => {keys[key] = value});
+//   Ticket ticket = new Ticket(keys[author].toString(), keys[title].toString(), keys[description].toString(), keys[state].toString());
+//
+//   return ticket;
+// }
 
 }

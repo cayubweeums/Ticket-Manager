@@ -3,9 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ticket_manager/Objects/ticket.dart';
 import 'package:ticket_manager/Services/database.dart';
+import 'package:ticket_manager/Pages/home_page.dart';
 
 class TicketList extends StatefulWidget {
-  final List<Ticket> tickets;
+
+  //Made tickets not final
+
+  List<Ticket> tickets;
   final dynamic user;
 
   TicketList(this.tickets, this.user);
@@ -31,6 +35,18 @@ class _TicketListState extends State<TicketList> {
     }
   }
 
+  void buttonHandler(Ticket ticket){
+    changeState(ticket);
+    loadOpenTickets();
+  }
+
+  void loadOpenTickets(){
+    getOpenTicketList().then((tickets) => {
+      this.setState(() {
+        this.widget.tickets = tickets;
+      })
+    });
+  }
 
 
   @override
@@ -45,17 +61,39 @@ class _TicketListState extends State<TicketList> {
             child: ExpansionTile(
               title: Text(ticket.title),
               children: <Widget>[
-                Text(ticket.author),
-                Text(ticket.description),
                 Row(
                   children: <Widget>[
-                    Text(ticket.state),
-                    FlatButton(
-                      onPressed: () {changeState(ticket);},
-                      child: Image.asset('assets/icon/service.png'),
-                      splashColor: Colors.purpleAccent,
-                    )
+                    Text("Author: "),
+                    Text(ticket.author)
                   ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Text("Description: "),
+                    Text(ticket.description),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Text("Status: "),
+                        Text(ticket.state),
+                      ],
+                    ),
+                  ],
+                ),
+                FlatButton(
+                  color: Colors.blue,
+                  textColor: Colors.white,
+                  disabledColor: Colors.grey,
+                  disabledTextColor: Colors.black,
+                  padding: EdgeInsets.all(6.0),
+                  splashColor: Colors.purpleAccent,
+                  onPressed: () {buttonHandler(ticket);},
+                  child: Text(
+                      "Close"
+                  ),
                 )
               ],
             ),
