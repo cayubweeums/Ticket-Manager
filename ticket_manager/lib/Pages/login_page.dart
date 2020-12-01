@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ticket_manager/Pages/handler_page.dart';
 import 'package:ticket_manager/Services/auth.dart';
 import 'dart:ui';
 import 'password_page.dart';
@@ -21,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController controllerOne = TextEditingController();
 
   final hintTextStyle = TextStyle(
-    color: Colors.white,
+    color: Colors.black12,
     fontFamily: 'OpenSans',
   );
 
@@ -32,11 +33,11 @@ class _LoginPageState extends State<LoginPage> {
   );
 
   final boxDecorationStyle = BoxDecoration(
-    color: Colors.blueAccent,
+    color: Colors.white,
     borderRadius: BorderRadius.circular(10.0),
     boxShadow: [
       BoxShadow(
-        color: Colors.black12,
+        color: Colors.black38,
         blurRadius: 6.0,
         offset: Offset(0, 2),
       ),
@@ -51,8 +52,12 @@ class _LoginPageState extends State<LoginPage> {
   void login() {
     this.userName = controllerOne.text;
     this.user = _authService.signInAnonymously();
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => HomePage(userName, user)));
+
+    Navigator.of(context).pushReplacement(new MaterialPageRoute(
+        builder: (BuildContext context) => HandlerPage(userName, user)));
+
+    // Navigator.push(context,
+    //     MaterialPageRoute(builder: (context) => HomePage(userName, user)));
   }
 
   void devlogin() {
@@ -77,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
           child: TextField(
             controller: controllerOne,
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
               fontFamily: 'OpenSans',
             ),
             decoration: InputDecoration(
@@ -85,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.person,
-                color: Colors.purple,
+                color: Colors.orangeAccent,
               ),
               hintText: 'Enter your Name',
               hintStyle: hintTextStyle,
@@ -110,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
-        color: Colors.purple,
+        color: Colors.orangeAccent,
         child: Text(
           'LOGIN',
           style: TextStyle(
@@ -136,11 +141,11 @@ class _LoginPageState extends State<LoginPage> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
-        color: Colors.blue,
+        color: Colors.blueGrey,
         child: Text(
-          'Dev Login',
+          'Admin Login',
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
             letterSpacing: 0.5,
             fontSize: 11.0,
             fontWeight: FontWeight.bold,
@@ -156,10 +161,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
         body: Center(
             child: Container(
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topRight,
-              colors: [Colors.purple, Colors.blueAccent])),
+      color: Colors.blueAccent,
       child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(

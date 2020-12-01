@@ -6,9 +6,10 @@ class Ticket{
   String author;
   String title;
   String description;
+  String longDescription;
   String state;
 
-  Ticket(this.author, this.title, this.description, this.state);
+  Ticket(this.author, this.title, this.description, this.longDescription, this.state);
 
 
   void setId(DatabaseReference id){
@@ -28,6 +29,7 @@ class Ticket{
       'author': this.author,
       'title': this.title,
       'description': this.description,
+      'longDescription': this.longDescription,
       'state': this.state
     };
   }

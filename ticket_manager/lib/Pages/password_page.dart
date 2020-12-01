@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'dev_ticket_page.dart';
+import 'package:ticket_manager/Services/auth.dart';
+
+import 'handler_page.dart';
+
 
 class PassPage extends StatefulWidget {
   @override
@@ -9,13 +12,20 @@ class PassPage extends StatefulWidget {
 //Password is "password"
 
 class PassPageState extends State<PassPage> {
+  String userName;
+  dynamic user;
+
+  AuthService _authService = AuthService();
+
   TextEditingController _controller = new TextEditingController();
-  get passtext => _controller.text;
+  get passText => _controller.text;
 
   _checksum() {
-    if (passtext == "password") {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => DevTick()));
+    if (passText == "password") {
+      this.userName = "Admin";
+      this.user = _authService.signInAnonymously();
+      Navigator.of(context).pushReplacement(new MaterialPageRoute(
+          builder: (BuildContext context) => HandlerPage(userName, user)));
     }
   }
 
@@ -28,11 +38,8 @@ class PassPageState extends State<PassPage> {
           backgroundColor: Colors.blueAccent,
         ),
         body: Container(
+          color: Colors.blueAccent,
           child: Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.bottomLeft,
-                    colors: [Colors.purple, Colors.blueAccent])),
             child: new Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -55,7 +62,7 @@ class PassPageState extends State<PassPage> {
                     padding: EdgeInsets.all(15.0),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0)),
-                    color: Colors.purple,
+                    color: Colors.orangeAccent,
                     child: Text('Enter Password'),
                   ),
                 )

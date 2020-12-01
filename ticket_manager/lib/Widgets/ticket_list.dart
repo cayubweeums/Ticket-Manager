@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ticket_manager/Objects/ticket.dart';
+import 'package:ticket_manager/Pages/closed_ticket_details_page.dart';
+import 'package:ticket_manager/Pages/open_ticket_details_page.dart';
 import 'package:ticket_manager/Services/database.dart';
 import 'package:ticket_manager/Pages/home_page.dart';
 
@@ -10,9 +12,9 @@ class TicketList extends StatefulWidget {
   //Made tickets not final
 
   List<Ticket> tickets;
-  final dynamic user;
+  final dynamic userName;
 
-  TicketList(this.tickets, this.user);
+  TicketList(this.tickets, this.userName);
 
 
   @override
@@ -21,23 +23,14 @@ class TicketList extends StatefulWidget {
 
 class _TicketListState extends State<TicketList> {
 
-
-  void changeState(Ticket ticket){
-    print(ticket.getId().toString());
-    if(ticket.state == "open"){
-      this.setState(() {
-        changeTicketState(ticket, "close");
-      });
-    }else{
-      this.setState(() {
-        changeTicketState(ticket, "open");
-      });
-    }
-  }
-
   void buttonHandler(Ticket ticket){
-    changeState(ticket);
-    loadOpenTickets();
+    if(ticket.state == "open"){
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => OpenTicketDetailsPage(ticket, widget.userName)));
+    }else if(ticket.state == "closed"){
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => ClosedTicketDetailsPage(ticket, widget.userName)));
+    }
   }
 
   void loadOpenTickets(){
@@ -69,7 +62,7 @@ class _TicketListState extends State<TicketList> {
                 ),
                 Row(
                   children: <Widget>[
-                    Text("Description: "),
+                    Text("Short Description: "),
                     Text(ticket.description),
                   ],
                 ),
@@ -84,15 +77,15 @@ class _TicketListState extends State<TicketList> {
                   ],
                 ),
                 FlatButton(
-                  color: Colors.blue,
+                  color: Colors.orangeAccent,
                   textColor: Colors.white,
                   disabledColor: Colors.grey,
                   disabledTextColor: Colors.black,
                   padding: EdgeInsets.all(6.0),
-                  splashColor: Colors.purpleAccent,
+                  splashColor: Colors.blueAccent,
                   onPressed: () {buttonHandler(ticket);},
                   child: Text(
-                      "Close"
+                      "Open Details"
                   ),
                 )
               ],

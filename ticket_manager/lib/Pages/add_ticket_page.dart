@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AddTicketPage extends StatefulWidget {
-  final Function(String, String) callback;
+  final Function(String, String, String) callback;
 
   AddTicketPage(this.callback);
 
@@ -13,18 +13,21 @@ class AddTicketPage extends StatefulWidget {
 class AddTicketPageState extends State<AddTicketPage> {
   final TextEditingController title = new TextEditingController(text: "");
   final TextEditingController description = new TextEditingController(text: "");
+  final TextEditingController longDescription = new TextEditingController(text: "");
 
   @override
   void dispose() {
     super.dispose();
     title.dispose();
     description.dispose();
+    longDescription.dispose();
   }
 
   void _saveInfo() {
-    widget.callback(title.text, description.text);
+    widget.callback(title.text, description.text, longDescription.text);
     title.clear();
     description.clear();
+    longDescription.clear();
     FocusScope.of(context).unfocus();
   }
 
@@ -38,10 +41,7 @@ class AddTicketPageState extends State<AddTicketPage> {
         ),
         body: Container(
           child: Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    colors: [Colors.purple, Colors.blueAccent])),
+            color: Colors.blueAccent,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -51,20 +51,28 @@ class AddTicketPageState extends State<AddTicketPage> {
                   controller: title,
                   decoration: InputDecoration(
                       hintText: "Title",
-                      hintStyle: TextStyle(color: Colors.grey)),
+                      hintStyle: TextStyle(color: Colors.orangeAccent)),
                 ),
                 new TextField(
                   keyboardType: TextInputType.text,
                   textAlign: TextAlign.center,
                   controller: description,
                   decoration: InputDecoration(
-                      hintText: "Description",
-                      hintStyle: TextStyle(color: Colors.grey)),
+                      hintText: "Short Description",
+                      hintStyle: TextStyle(color: Colors.orangeAccent)),
+                ),
+                new TextField(
+                  keyboardType: TextInputType.text,
+                  textAlign: TextAlign.center,
+                  controller: longDescription,
+                  decoration: InputDecoration(
+                      hintText: "Long Description",
+                      hintStyle: TextStyle(color: Colors.orangeAccent)),
                 ),
                 new RaisedButton.icon(
                   onPressed: _saveInfo,
                   icon: Icon(Icons.save),
-                  color: Colors.purpleAccent,
+                  color: Colors.orangeAccent,
                   label: Text("Save"),
                 )
               ],
